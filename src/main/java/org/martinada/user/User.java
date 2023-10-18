@@ -5,13 +5,15 @@ import org.martinada.utils.EmailValidator;
 import org.martinada.utils.PhoneNumberValidator;
 import org.martinada.utils.PostCodeValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity
+@Configuration
+@ComponentScan
 public class User {
-    @Id
     private Integer UserId;
     private String firstName;
     private String lastName;

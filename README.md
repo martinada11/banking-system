@@ -1,2 +1,2 @@
 # banking-system
-Simple banking API
+Simple banking with REST API
