@@ -30,7 +30,6 @@ public class User {
 
     public User() {}
 
-    @Autowired
     public User(
             String firstName,
             String lastName,
