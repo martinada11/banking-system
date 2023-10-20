@@ -28,6 +28,8 @@ public class User {
     private EmailValidator ev;
     private PhoneNumberValidator pnv;
 
+    public User() {}
+
     @Autowired
     public User(
             String firstName,

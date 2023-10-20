@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 @Configuration
 @ComponentScan
 public class SavingsAccount extends Account {
+    public SavingsAccount() {}
     public SavingsAccount(BigDecimal balance) {
         super(balance);
     }
