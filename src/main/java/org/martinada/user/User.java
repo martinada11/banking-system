@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.Objects;
 
 @Configuration
 @ComponentScan
@@ -29,6 +30,30 @@ public class User {
     private PhoneNumberValidator pnv;
 
     public User() {}
+    public User(
+            String firstName,
+            String lastName,
+            boolean isAdmin,
+            String address,
+            String city,
+            String postCode,
+            String phoneNumber,
+            String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.city = city;
+        this.postCode = postCode;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+
+        if (isAdmin) {
+            this.type = type.CLERK;
+        } else {
+            this.type = type.ACCOUNT_HOLDER;
+        }
+
+    }
 
     public User(
             String firstName,
@@ -142,14 +167,33 @@ public class User {
 
     @Override
     public String toString() {
-        return String.format("This account holder is %s %s.\n Current Address:\n %s %s %s %s \nCurrent contact methods are phone as %s & email as %s.\n Current balance is %f",
-                firstName,
-                lastName,
-                address,
-                city,
-                postCode,
-                phoneNumber,
-                email,
-                account.getBalance());
+        return "User{" +
+                "UserId=" + UserId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", type=" + type +
+                ", address='" + address + '\'' +
+                ", city='" + city + '\'' +
+                ", postCode='" + postCode + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", email='" + email + '\'' +
+                ", account=" + account +
+                ", pcv=" + pcv +
+                ", ev=" + ev +
+                ", pnv=" + pnv +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(UserId, user.UserId) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && type == user.type && Objects.equals(address, user.address) && Objects.equals(city, user.city) && Objects.equals(postCode, user.postCode) && Objects.equals(phoneNumber, user.phoneNumber) && Objects.equals(email, user.email) && Objects.equals(account, user.account) && Objects.equals(pcv, user.pcv) && Objects.equals(ev, user.ev) && Objects.equals(pnv, user.pnv);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(UserId, firstName, lastName, type, address, city, postCode, phoneNumber, email, account, pcv, ev, pnv);
     }
 }

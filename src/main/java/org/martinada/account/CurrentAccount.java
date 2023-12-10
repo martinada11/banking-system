@@ -7,6 +7,7 @@ import java.math.BigDecimal;
 @Configuration
 @ComponentScan("com.martinada")
 public class CurrentAccount extends Account {
+    //TODO add linked cards idea, probably going to include a new CARD Model
     public CurrentAccount() {}
     public CurrentAccount(BigDecimal balance) {
         super(balance);
